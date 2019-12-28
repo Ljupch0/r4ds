@@ -1,0 +1,101 @@
+---
+title: "r4ds: strings"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+
+To include a literal single or double quote within a string you can use \ to “escape” it:
+
+double_quote <- "\"" # or '"'
+single_quote <- '\'' # or "'"
+That means if you want to include a literal backslash, you’ll need to double it up: "\\".
+
+
+```{r}
+
+writeLines(c("\"", "\\"))
+
+```
+
+`str_c` is equivalent to paste and paste0, except when NAs are involved str_c returns NA, and the paste functions convert NAs to string "NA" and continue the concat.
+
+```{r}
+paste("x", NA)
+str_c("x", NA)
+```
+
+
+
+str_c works by multiplying the vectors and recylcing elements in the case one is a multiple of the other. The sep argument inserts a given string between every vector pair, while collapse further merges all pairs into one string and adds at the end of every pair a given string.
+```{r}
+x <- c("x", "g", "l")
+y <- c("m", "n", "o")
+
+str_c(x, y, sep="*", collapse = NULL)
+```
+
+
+14.2.5.3
+
+If the string has an even number of characters, the middle character is considered to be the last character of the first half of the string.
+```{r}
+word <- "Samantha"
+
+word1 <- "April"
+
+
+middle_char <- function(string) {
+  index <- str_length(string)-floor(str_length(string)/2)
+  return(str_sub(string, index, index))
+}
+
+middle_char(word1)
+```
+
+
+```{r}
+m <- "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
+```
+
+
+```{r}
+writeLines(str_wrap(m, width=40))
+```
+
+
+```{r}
+?str_trim
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
