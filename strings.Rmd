@@ -66,23 +66,84 @@ writeLines(str_wrap(m, width=40))
 
 
 ```{r}
-?str_trim
+v <- c()
+v1 <- c("a")
+v2 <- c("a", "b")
+v3 <- c("a", "b", "c")
+```
+
+
+Function
+```{r}
+
+```
+
+
+
+
+```{r}
+string <- c("a", "b", "c")
+```
+
+```{r}
+
+stringr168 <- function(string){
+if (length(string) == 1) {
+  return(string)
+} else if (length(string) == 2) {
+  return(paste(string[1], "and", string[[2]]))
+} else if (length(string) >= 3) {
+  end <- paste(string[length(string)-1], "and", string[[length(string)]])
+  begin <- paste(string[[1:(length(string)-2)]], sep = ",")
+  return(paste(begin, end, collapse=""))
+}
+}
+
+```
+
+
+
+
+```{r}
+stringr168(c("a", "b", "c", "d", "e"))
+```
+
+
+REGEX
+
+```{r}
+x <- c("apple", "banana", "pear")
+y <- "$^$"
+
+str_view(y, "\\$\\^\\$")
 ```
 
 
 
 
 
+```{r}
+
+x <- c("+38970596321", "+38907056256")
+
+str_view(x, "^\\+389\\d{8}", TRUE)
+```
+
+
+```{r}
+x <- "\"\'\\"
+
+writeLines(x)
+
+str_view(x, "\"\'\\\\")
+
+```
 
 
 
+```{r}
 
-
-
-
-
-
-
+```
 
 
 
