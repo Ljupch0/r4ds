@@ -104,8 +104,6 @@ if (length(string) == 1) {
 
 
 
-```{r}
-stringr168(c("a", "b", "c", "d", "e"))
 ```
 
 
@@ -113,9 +111,17 @@ REGEX
 
 ```{r}
 x <- c("apple", "banana", "pear")
-y <- "$^$"
 
-str_view(y, "\\$\\^\\$")
+#start with 3 consonants
+str_view(stringr::words, "^[^aeiou]{3}", TRUE)
+
+#three or more vowels in a row
+str_view(stringr::words, "[aeiou]{3,}", TRUE)
+
+
+#two or more vowel-consonant pairs
+str_view(stringr::words, "([aeiou][^aeiou]){2,}", TRUE)
+
 ```
 
 
@@ -143,8 +149,28 @@ str_view(x, "\"\'\\\\")
 
 ```{r}
 
+? {0,1}
+
++ {1,}
+
+* {0,}
+
+
+
+
 ```
 
+1. Matches all strings, including empty ones.
+
+2. Matches strings within curly braces, with one or more characters.
+
+3. 4 digits followed by "-", then 2 digits, "-", and 2 digits again.
+
+4. 4 literal slashes.
+
+```{r}
+
+```
 
 
 
