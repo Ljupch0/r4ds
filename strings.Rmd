@@ -168,14 +168,25 @@ str_view(x, "\"\'\\\\")
 
 4. 4 literal slashes.
 
+
+
+
+1. (.)\1\1 - any character appearing 3 times.
+2. "(.)(.)\\2\\1" - it will match abba
+3. (..)\1 - it will match abab
+4. "(.).\\1.\\1" - matches any character followed by any character followed by twice the first character.
+5. (.)(.)(.).*\\3\\2\\1 - matches anhy 3 characters followed by none or any number of characters, followed by the first 3 chracters in reverse order.
+
 ```{r}
+#starts and ends with same character
+str_view(stringr::words, "^(.).*\\1$", TRUE)
 
+#starts and ends with same character pair
+str_view(stringr::words, "^(..).*\\1$", TRUE)
+
+#letter appears thrice
+str_view(stringr::words, ".*(.).*\\1.*\\1.*", TRUE)
 ```
-
-
-
-
-
 
 
 
